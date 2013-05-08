@@ -130,7 +130,6 @@ class RestRequest {
 			$this -> url .= "/" . $this -> requestBody;
 			$this -> requestBody = '';
 			if ($this -> success_callback_url != null) {
-				echo "sd;lfj;sdlfjs;dljf";
 				$this -> requestBody = http_build_query(array('success_callback_url' => $this -> success_callback_url), '', '&');
 			}
 		}

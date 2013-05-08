@@ -26,11 +26,12 @@ $media_item->create($files[0]);
 if ($media_item->rest_request->getStatus()==200){
 	$xml = simplexml_load_string( $media_item->rest_request->getResponseBody());
 	$media_item->uuid=$xml->id;
-	echo "Uploaded new media with uuid ".$media_item->uuid;
+	echo "Uploaded new media with uuid ".$media_item->uuid."\n";
 }
 else {
 	echo "An error occurred creating the Media : ";
-	$media_item->rest_request->printResult();	
+	$media_item->rest_request->printResult();
+	exit("An error occurred creating the Media");	
 }
 $media_item->rest_request->flush();
 
@@ -38,13 +39,13 @@ $media_item->rest_request->flush();
 $transcription_success_callback_url = 'https://www.koemei.com/REST';
 $media_item->transcribe($transcription_success_callback_url);
 if ($media_item->rest_request->getStatus()==202){
-	echo  $media_item->rest_request->getResponseBody();
 	$xml = simplexml_load_string( $media_item->rest_request->getResponseBody());
-	echo "Launched transcription of new media : ".$media_item->uuid;
+	echo "Launched transcription of new media : ".$media_item->uuid."\n";
 }
 else {
 	echo "An error occurred requesting Media transcription : ";
-	$media_item->rest_request->printResult();	
+	$media_item->rest_request->printResult();
+	exit("An error occurred creating the Media");
 }
 $media_item->rest_request->flush();
 
