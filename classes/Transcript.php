@@ -1,5 +1,4 @@
 <?php
-use RestRequest;
 
 class Transcript extends BaseObject {
 	
@@ -7,7 +6,7 @@ class Transcript extends BaseObject {
 		$this->rest_request = $rest_request;
 	}
 	
-	public function create(){
+	public function create($param){
 		/* Not available */
 	}
 	public function delete($uuid){
@@ -15,8 +14,8 @@ class Transcript extends BaseObject {
 	}
 	public function get($uuid){
 		$this->rest_request->method = "GET";
-		$this->rest_request->path = "transcripts/"+$uuid;
-		return $this->rest_request->execute();		
+		$this->rest_request->path = "transcripts/".$uuid;
+		return $this->rest_request->execute();
 	}
 	public function get_list(){
 		$this->rest_request->method = "GET";
