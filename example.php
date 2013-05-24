@@ -8,8 +8,8 @@
  * 4) Publish a transcript
  */
 
-$username = 'testuser@koemei.com'; // replace by username
-$password = 'pwd4test'; // replace by password
+$username = '<CHANGEME>'; // replace by username
+$password = 'CHANGEME'; // replace by password
 
 function __autoload($class_name) {
     include 'classes/'.$class_name . '.php';
